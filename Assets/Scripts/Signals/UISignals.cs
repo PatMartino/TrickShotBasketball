@@ -9,5 +9,6 @@ namespace Signals
         public UnityAction<UIStates> OnMenuUIManagement = delegate {  };
         public UnityAction OnSettingLevelText =delegate {  };
         public UnityAction OnSettingBounceText = delegate {  };
+        public UnityAction<int, BallLevelTypes> OnClickBallButton = delegate {  };
     }
 }

@@ -5,6 +5,8 @@
         MainMenuUI,
         BallMenuUI,
         InGameUI,
-        NextLevelUI
+        NextLevelUI,
+        Store,
+        StoreButton
     }
 }

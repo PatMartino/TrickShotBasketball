@@ -57,6 +57,13 @@ namespace Managers
                 case UIStates.NextLevelUI:
                     Instantiate(Resources.Load<GameObject>("UI/NextLevelUI"), canvas, false);
                     break;
+                case UIStates.Store:
+                    Debug.Log("Obaaaaa");
+                    Instantiate(Resources.Load<GameObject>("UI/Store"), canvas, false);
+                    break;
+                case UIStates.StoreButton:
+                    Instantiate(Resources.Load<GameObject>("UI/StoreButton"), canvas, false);
+                    break;
             }
             
         }

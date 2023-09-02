@@ -10,6 +10,7 @@ namespace Managers
         #region Serialized Fields
         [SerializeField] private ushort levelID;
         [SerializeField] private Transform levelHolder;
+        [SerializeField] private Transform ballHolder;
         #endregion
 
         #region Private Fields
@@ -49,8 +50,8 @@ namespace Managers
 
         private void Init()
         {
-            _levelLoaderCommand = new OnLevelLoaderCommand(levelHolder);
-            _levelDestroyerCommand = new OnLevelDestroyerCommand(levelHolder);
+            _levelLoaderCommand = new OnLevelLoaderCommand(levelHolder, ballHolder);
+            _levelDestroyerCommand = new OnLevelDestroyerCommand(levelHolder, ballHolder);
         }
         
         private void SubscribeEvents()
@@ -62,6 +63,7 @@ namespace Managers
             CoreGameSignals.Instance.OnGettingLevelID += OnGettingLevelID;
             CoreGameSignals.Instance.OnPlay += OnPlay;
             CoreGameSignals.Instance.OnBasket += OnBasket;
+            CoreGameSignals.Instance.OnGettingBallHolder += OnGettingBallHolder;
         }
 
         private void OnPlay()
@@ -111,6 +113,11 @@ namespace Managers
             if (!ES3.KeyExists("levelID")) return;
             levelID= ES3.Load<ushort>("levelID");
             Debug.Log("Game Load! "+ ES3.Load("levelID"));
+        }
+
+        private Transform OnGettingBallHolder()
+        {
+            return ballHolder;
         }
         
         private void UnSubscribeEvents()

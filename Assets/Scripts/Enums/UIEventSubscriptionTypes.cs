@@ -4,6 +4,11 @@
     {
         OnPlay,
         OnNextLevel,
-        OnDoublePoint
+        OnDoublePoint,
+        OnBuyingRareBall,
+        OnBuyingCommonBall,
+        OnBuyingLegendaryBall,
+        OnStore,
+        StoreButton
     }
 }

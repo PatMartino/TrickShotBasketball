@@ -81,7 +81,7 @@ namespace Controllers
             _bounce=0;
             _rigidbody.velocity = Vector3.zero;
             _rigidbody.angularVelocity = Vector3.zero; 
-            transform.position = spawnerPosition.position;
+            transform.position = CoreGameSignals.Instance.OnGettingBallHolder().position;
             CoreGameSignals.Instance.OnTryAgain?.Invoke();
             _rigidbody.isKinematic = true;
         }

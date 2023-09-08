@@ -40,6 +40,8 @@ namespace Ball
 
         private void OnMouseUp()
         {
+            if(CoreGameSignals.Instance.OnGettingGameState?.Invoke()!=GameStates.Game)    
+                return;
             CoreGameSignals.Instance.OnHidingLine();
             _mouseReleasePos = Input.mousePosition;
             _rigidBody.isKinematic = false;

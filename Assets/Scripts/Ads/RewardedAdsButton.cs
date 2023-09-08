@@ -1,4 +1,5 @@
 using System;
+using Enums;
 using UnityEngine;
 using UnityEngine.Advertisements;
 using UnityEngine.UI;
@@ -15,7 +16,7 @@ namespace Ads
  
         void Awake()
         {
-            SubscribeEvents();
+            //SubscribeEvents();
             // Get the Ad Unit ID for the current platform:
 #if UNITY_IOS
         _adUnitId = _iOSAdUnitId;
@@ -31,6 +32,11 @@ namespace Ads
         {
             LoadAd();
         }
+
+        /*private void OnDisable()
+        {
+            AdSignals.Instance.OnLoadingAd -= LoadAd;
+        }*/
 
         private void SubscribeEvents()
         {
@@ -74,7 +80,8 @@ namespace Ads
             if (adUnitId.Equals(_adUnitId) && showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED))
             {
                 Debug.Log("Unity Ads Rewarded Ad Completed");
-                // Grant a reward.
+                CoinSignals.Instance.OnSetCoin?.Invoke(CoinOperations.Gain,25);
+                Debug.Log(CoinSignals.Instance.OnGetCoin?.Invoke());
                 _showAdButton.interactable = false;
             }
         }

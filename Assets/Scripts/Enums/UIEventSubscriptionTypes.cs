@@ -9,6 +9,9 @@
         OnBuyingCommonBall,
         OnBuyingLegendaryBall,
         OnStore,
-        StoreButton
+        StoreButton,
+        OnSwitchCommonBalls,
+        OnSwitchRareBalls,
+        OnSwitchLegendaryBalls
     }
 }

@@ -69,6 +69,15 @@ namespace Handlers
                 case UIEventSubscriptionTypes.StoreButton:
                     _button.onClick.AddListener(() =>UISignals.Instance.OnMenuUIManagement.Invoke(UIStates.StoreButton));
                     break;
+                case UIEventSubscriptionTypes.OnSwitchCommonBalls:
+                    _button.onClick.AddListener(() =>UISignals.Instance.OnCommon.Invoke());
+                    break;
+                case UIEventSubscriptionTypes.OnSwitchRareBalls:
+                    _button.onClick.AddListener(() =>UISignals.Instance.OnRare.Invoke());
+                    break;
+                case UIEventSubscriptionTypes.OnSwitchLegendaryBalls:
+                    _button.onClick.AddListener(() =>UISignals.Instance.OnLegendary.Invoke());
+                    break;
             }
         }
 

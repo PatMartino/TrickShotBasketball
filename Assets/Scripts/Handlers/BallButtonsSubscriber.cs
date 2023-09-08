@@ -30,7 +30,6 @@ namespace Handlers
             {
                 SubscribeEvents();
                 _isInitialized = true;
-                Debug.Log("YUKLEN!!!!!!!!");
             }
         }
 

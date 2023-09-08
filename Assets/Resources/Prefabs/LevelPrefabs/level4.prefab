@@ -254,7 +254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7060450276661777589}
   m_Layer: 0
-  m_Name: level1
+  m_Name: level4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -274,6 +274,7 @@ Transform:
   m_Children:
   - {fileID: 5357466281414843999}
   - {fileID: 6493170249999083123}
+  - {fileID: 7852105253378852686}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -382,6 +383,57 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2292644467589016610
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7852105253378852686}
+  - component: {fileID: 4123590296749280767}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7852105253378852686
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2292644467589016610}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -20.415806, y: 10.443714, z: -20.300217}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7060450276661777589}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4123590296749280767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2292644467589016610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7a43ec419f122240a6caaee50d42b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsToToggle:
+  - gameObject: {fileID: 2232136818479624001}
+    activeTimeInterval: 5
+    inActiveTimeInterval: 2
+  - gameObject: {fileID: 8594155876309023546}
+    activeTimeInterval: 6
+    inActiveTimeInterval: 1.5
 --- !u!1 &4995123266602709755
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,7 +462,7 @@ Transform:
   m_GameObject: {fileID: 4995123266602709755}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.5344315, y: -3.19, z: 0.09697533}
-  m_LocalScale: {x: 17.410162, y: 1, z: 44.84258}
+  m_LocalScale: {x: 38.17004, y: 1, z: 44.84258}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6493170249999083123}

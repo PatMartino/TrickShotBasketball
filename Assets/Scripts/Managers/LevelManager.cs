@@ -99,8 +99,10 @@ namespace Managers
 
         private void OnBasket()
         {
+            CoinSignals.Instance.OnSetCoin?.Invoke(CoinOperations.Gain,25);
             UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.NextLevelUI);
             CoreGameSignals.Instance.OnPausingGame?.Invoke();
+            
         }
 
         private ushort OnGettingLevelID()

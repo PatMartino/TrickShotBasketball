@@ -42,7 +42,12 @@ namespace Managers
 
         private void OnMenuUIManagement(UIStates state)
         {
-            UIDestroyer();
+            if (state != UIStates.Store && state !=UIStates.StoreButton)
+            {
+                Debug.Log(state);
+                UIDestroyer();
+            }
+
 
             switch (state)
             {
@@ -58,11 +63,13 @@ namespace Managers
                     Instantiate(Resources.Load<GameObject>("UI/NextLevelUI"), canvas, false);
                     break;
                 case UIStates.Store:
-                    Debug.Log("Obaaaaa");
+                    canvas.GetChild(0).gameObject.SetActive(false);
                     Instantiate(Resources.Load<GameObject>("UI/Store"), canvas, false);
                     break;
                 case UIStates.StoreButton:
-                    Instantiate(Resources.Load<GameObject>("UI/StoreButton"), canvas, false);
+                    SaveSignals.Instance.OnSavingBallStore?.Invoke();
+                    canvas.GetChild(0).gameObject.SetActive(true);
+                    Destroy(canvas.GetChild(1).gameObject);
                     break;
             }
             

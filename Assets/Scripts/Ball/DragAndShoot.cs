@@ -66,6 +66,7 @@ namespace Ball
         
             _rigidBody.AddForce(new Vector3(force.x*1.5f,force.y*2,force.y*1.8f) * -forceMultiplier);
             CoreGameSignals.Instance.OnChangeGameState?.Invoke(GameStates.Shoot);
+            CoreGameSignals.Instance.OnSetNetClothCollider?.Invoke();
         }
 
         #endregion

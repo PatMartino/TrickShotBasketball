@@ -25,8 +25,9 @@ namespace Signals
         public UnityAction OnPlay = delegate {  };
         public UnityAction OnBasket = delegate {  };
         public UnityAction<BallLevelTypes> OnBuyingBall = delegate {  };
-        public UnityAction<int> OnSelectBall = delegate { };
+        public UnityAction<BallLevelTypes, int> OnSelectBall = delegate { };
         public Func<GameObject> OnGettingBall = () => null;
         public Func<Transform> OnGettingBallHolder = () => null;
+        public UnityAction OnSetNetClothCollider = delegate {  };
     }
 }

@@ -12,14 +12,14 @@ namespace Managers
 
         #endregion
 
-        #region OnEnable, OnDestroy
+        #region OnEnable, OnDisable
 
         private void OnEnable()
         {
             SubscribeEvents();
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             UnSubscribeEvents();
         }

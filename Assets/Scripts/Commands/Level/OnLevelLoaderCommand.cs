@@ -1,4 +1,5 @@
 using Interfaces;
+using Signals;
 using UnityEngine;
 
 namespace Commands.Level
@@ -21,7 +22,8 @@ namespace Commands.Level
         public void Execute(ushort levelID)
         {
             Object.Instantiate(Resources.Load<GameObject>($"Prefabs/LevelPrefabs/level{levelID}"), _levelHolder);
-            Object.Instantiate(Resources.Load<GameObject>("Prefabs/BallPrefabs/Ball1"), _ballHolder);
+            //Degiştir
+            Object.Instantiate(CoreGameSignals.Instance.OnGettingBall?.Invoke(), _ballHolder);
         }
     }
 }

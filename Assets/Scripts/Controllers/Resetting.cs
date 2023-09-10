@@ -30,6 +30,8 @@ namespace Controllers
                 ES3.DeleteKey("legendaryCount");
                 ES3.DeleteKey("levelID");
                 ES3.DeleteKey("Coin");
+                ES3.DeleteKey("Ball");
+                ES3.DeleteKey("reso");
                 Debug.Log("Reset");
             }
             

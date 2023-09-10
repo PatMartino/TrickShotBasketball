@@ -37,6 +37,7 @@ namespace Managers
         {
             CoreGameSignals.Instance.OnLevelInitialize?.Invoke(levelID);
             UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.MainMenuUI);
+            CoreGameSignals.Instance.OnSetNetClothCollider?.Invoke();
         }
         
         private void OnDisable()
@@ -81,10 +82,12 @@ namespace Managers
             AdSignals.Instance.OnLoadingAd?.Invoke();
             AdSignals.Instance.OnShowingAd?.Invoke();
             levelID++;
-            CoreGameSignals.Instance.OnClearActiveLevel?.Invoke();
+            //CoreGameSignals.Instance.OnClearActiveLevel?.Invoke();
             CoreGameSignals.Instance.OnLevelInitialize?.Invoke(levelID);
+            
             CoreGameSignals.Instance.OnChangeGameState?.Invoke(GameStates.Game);
             UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.InGameUI);
+            //CoreGameSignals.Instance.OnSetNetClothCollider?.Invoke();
             CoreGameSignals.Instance.OnResumingGame?.Invoke();
             AdSignals.Instance.OnLoadBanner?.Invoke();
             AdSignals.Instance.OnShowingBanner?.Invoke();

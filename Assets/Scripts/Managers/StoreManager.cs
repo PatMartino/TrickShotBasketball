@@ -1,13 +1,9 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using Enums;
 using UnityEngine;
 using UnityEngine.UI;
 using Signals;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
-using System.Threading.Tasks;
 
 namespace Managers
 {
@@ -30,6 +26,7 @@ namespace Managers
         private byte _rareCount =0;
         private byte _commonCount =0;
         private byte _legendaryCount =0;
+        private bool _isSaved;
         
 
         #endregion
@@ -61,7 +58,7 @@ namespace Managers
         
         private void Init()
         {
-            if (ES3.KeyExists("rareCount"))
+            if (ES3.KeyExists("isSaved"))
             {
                 Load();
             }
@@ -175,9 +172,19 @@ namespace Managers
                 }
                 
             }
-            _rareCount = ES3.Load<byte>("rareCount");
-            _commonCount = ES3.Load<byte>("commonCount");
-            _legendaryCount = ES3.Load<byte>("legendaryCount");
+            if (ES3.KeyExists("rareCount"))
+            {
+                _rareCount = ES3.Load<byte>("rareCount");;
+            }
+            if (ES3.KeyExists("commonCount"))
+            {
+                _commonCount = ES3.Load<byte>("commonCount");
+            }
+            if (ES3.KeyExists("legendaryCount"))
+            {
+                _legendaryCount = ES3.Load<byte>("legendaryCount");
+            }
+            
             Debug.LogWarning("Load!");
         }
 
@@ -214,6 +221,8 @@ namespace Managers
                         _rareCount++;
                         ES3.Save($"rareBalls{random}", _rareBalls[random]);
                         ES3.Save("rareCount", _rareCount);
+                        _isSaved = true;
+                        ES3.Save("isSaved",_isSaved);
                         CoinSignals.Instance.OnSetCoin?.Invoke(CoinOperations.Lose,250);
                         HaveBall();
                         
@@ -241,6 +250,8 @@ namespace Managers
                         _legendaryCount++;
                         ES3.Save($"legendaryBalls{random}", _legendaryBalls[random]);
                         ES3.Save("legendaryCount", _legendaryCount);
+                        _isSaved = true;
+                        ES3.Save("isSaved",_isSaved);
                         CoinSignals.Instance.OnSetCoin?.Invoke(CoinOperations.Lose,500);
                         HaveBall();
                     }
@@ -267,6 +278,8 @@ namespace Managers
                         _commonCount++;
                         ES3.Save($"commonBalls{random}", _commonBalls[random]);
                         ES3.Save("commonCount", _commonCount);
+                        _isSaved = true;
+                        ES3.Save("isSaved",_isSaved);
                         CoinSignals.Instance.OnSetCoin?.Invoke(CoinOperations.Lose,100);
                         HaveBall();
                     }
@@ -326,6 +339,12 @@ namespace Managers
                     legendaryBallButtons[num].GetComponent<Image>().color = greenColor;
                     break;
             }
+
+            if (Time.timeScale != 0)
+            {
+                CoreGameSignals.Instance.OnClearActiveLevel?.Invoke();
+                CoreGameSignals.Instance.OnLevelInitialize?.Invoke(CoreGameSignals.Instance.OnGettingLevelID.Invoke());
+            }
         }
 
         private void Resetting()
@@ -347,6 +366,7 @@ namespace Managers
             ES3.DeleteKey("rareCount");
             ES3.DeleteKey("commonCount");
             ES3.DeleteKey("legendaryCount");
+            ES3.DeleteKey("isSaved");
             Debug.LogWarning("Reset!");
         }
 

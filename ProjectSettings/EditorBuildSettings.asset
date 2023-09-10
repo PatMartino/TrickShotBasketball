@@ -6,5 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes: []
   m_configObjects:
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000,
+      guid: e420338816df000419a00480dfc33198, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 0c62633eb67467f40b47b6fcf99cb6a3,
+      type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000,
+      guid: 4f3048d048aac5340812e2004f0a21bb, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
       guid: de5e151e778e9174582ad6c8439b044c, type: 2}

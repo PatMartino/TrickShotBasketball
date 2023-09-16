@@ -7,6 +7,7 @@
         InGameUI,
         NextLevelUI,
         Store,
-        StoreButton
+        StoreButton,
+        ExtraHealth
     }
 }

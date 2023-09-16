@@ -17,6 +17,7 @@ namespace Managers
 
         private OnLevelLoaderCommand _levelLoaderCommand;
         private OnLevelDestroyerCommand _levelDestroyerCommand;
+        private bool _isBasket;
 
         #endregion
 
@@ -65,6 +66,10 @@ namespace Managers
             CoreGameSignals.Instance.OnPlay += OnPlay;
             CoreGameSignals.Instance.OnBasket += OnBasket;
             CoreGameSignals.Instance.OnGettingBallHolder += OnGettingBallHolder;
+            CoreGameSignals.Instance.OnReturnCheckPoint += OnReturnCheckPoint;
+            CoreGameSignals.Instance.OnContinueWithExtraHealth += OnContinueWithExtraHealth;
+            CoreGameSignals.Instance.OnGetIsBasket += OnGetIsBasket;
+            CoreGameSignals.Instance.OnSetIsBasket += OnSetIsBasket;
         }
 
         private void OnPlay()
@@ -82,12 +87,13 @@ namespace Managers
             AdSignals.Instance.OnLoadingAd?.Invoke();
             AdSignals.Instance.OnShowingAd?.Invoke();
             levelID++;
+            HealthSignals.Instance.OnCheckIsACheckpoint?.Invoke();
             //CoreGameSignals.Instance.OnClearActiveLevel?.Invoke();
             CoreGameSignals.Instance.OnLevelInitialize?.Invoke(levelID);
             
             CoreGameSignals.Instance.OnChangeGameState?.Invoke(GameStates.Game);
             UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.InGameUI);
-            //CoreGameSignals.Instance.OnSetNetClothCollider?.Invoke();
+            _isBasket = false;
             CoreGameSignals.Instance.OnResumingGame?.Invoke();
             AdSignals.Instance.OnLoadBanner?.Invoke();
             AdSignals.Instance.OnShowingBanner?.Invoke();
@@ -104,8 +110,32 @@ namespace Managers
         {
             CoinSignals.Instance.OnSetCoin?.Invoke(CoinOperations.Gain,25);
             UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.NextLevelUI);
-            CoreGameSignals.Instance.OnPausingGame?.Invoke();
+            //CoreGameSignals.Instance.OnPausingGame?.Invoke();
             
+        }
+
+        private void OnReturnCheckPoint()
+        {
+            CoreGameSignals.Instance.OnClearActiveLevel?.Invoke();
+            AdSignals.Instance.OnLoadingAd?.Invoke();
+            AdSignals.Instance.OnShowingAd?.Invoke();
+            levelID = (ushort)HealthSignals.Instance.OnGetCheckPoint.Invoke();
+            CoreGameSignals.Instance.OnLevelInitialize?.Invoke(levelID);
+            HealthSignals.Instance.OnSetHealth?.Invoke(CoinOperations.Gain,5);
+            CoreGameSignals.Instance.OnChangeGameState?.Invoke(GameStates.Game);
+            UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.InGameUI);
+            CoreGameSignals.Instance.OnResumingGame?.Invoke();
+            AdSignals.Instance.OnLoadBanner?.Invoke();
+            AdSignals.Instance.OnShowingBanner?.Invoke();
+            ES3.Save<ushort>("levelID", levelID);
+            Debug.Log("Game Saved! "+ ES3.Load("levelID"));
+        }
+
+        private void OnContinueWithExtraHealth()
+        {
+            CoreGameSignals.Instance.OnResumingGame?.Invoke();
+            UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.InGameUI);
+            CoreGameSignals.Instance.OnResettingBall?.Invoke();
         }
 
         private ushort OnGettingLevelID()
@@ -115,16 +145,26 @@ namespace Managers
 
         private void LoadLevel()
         {
-            if (!ES3.KeyExists("levelID")) return;
-            levelID= ES3.Load<ushort>("levelID");
-            Debug.Log("Game Load! "+ ES3.Load("levelID"));
+            levelID = ES3.KeyExists("levelID") ? ES3.Load<ushort>("levelID") : (ushort)1;
+
+            //Debug.Log("Game Load! "+ ES3.Load("levelID"));
         }
 
         private Transform OnGettingBallHolder()
         {
             return ballHolder;
         }
-        
+
+        private bool OnGetIsBasket()
+        {
+            return _isBasket;
+        }
+
+        private void OnSetIsBasket(bool value)
+        {
+            _isBasket = value;
+        } 
+
         private void UnSubscribeEvents()
         {
             CoreGameSignals.Instance.OnLevelInitialize -= _levelLoaderCommand.Execute;
@@ -134,6 +174,11 @@ namespace Managers
             CoreGameSignals.Instance.OnGettingLevelID -= OnGettingLevelID;
             CoreGameSignals.Instance.OnPlay -= OnPlay;
             CoreGameSignals.Instance.OnBasket -= OnBasket;
+            CoreGameSignals.Instance.OnGettingBallHolder -= OnGettingBallHolder;
+            CoreGameSignals.Instance.OnReturnCheckPoint -= OnReturnCheckPoint;
+            CoreGameSignals.Instance.OnContinueWithExtraHealth -= OnContinueWithExtraHealth;
+            CoreGameSignals.Instance.OnGetIsBasket -= OnGetIsBasket;
+            CoreGameSignals.Instance.OnSetIsBasket -= OnSetIsBasket;
         }
 
         #endregion

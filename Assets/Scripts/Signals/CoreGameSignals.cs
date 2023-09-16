@@ -29,5 +29,9 @@ namespace Signals
         public Func<GameObject> OnGettingBall = () => null;
         public Func<Transform> OnGettingBallHolder = () => null;
         public UnityAction OnSetNetClothCollider = delegate {  };
+        public UnityAction OnReturnCheckPoint = delegate {  };
+        public UnityAction OnContinueWithExtraHealth = delegate {  };
+        public Func<bool> OnGetIsBasket = () => false;
+        public UnityAction<bool> OnSetIsBasket = delegate {  };
     }
 }

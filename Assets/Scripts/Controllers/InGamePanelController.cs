@@ -39,7 +39,7 @@ namespace Controllers
 
         private void OnSettingLevelText()
         {
-            int level = CoreGameSignals.Instance.OnGettingLevelID() + 1;
+            int level = CoreGameSignals.Instance.OnGettingLevelID();
             levelText.text = "Level " + level;
             Debug.Log("Level: "+(int)CoreGameSignals.Instance.OnGettingLevelID());
         }

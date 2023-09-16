@@ -12,6 +12,7 @@
         StoreButton,
         OnSwitchCommonBalls,
         OnSwitchRareBalls,
-        OnSwitchLegendaryBalls
+        OnSwitchLegendaryBalls,
+        OnReturnCheckPoint
     }
 }

@@ -53,13 +53,14 @@ namespace Trajectory
         {
             if(CoreGameSignals.Instance.OnGettingGameState?.Invoke()!=GameStates.Game)    
                 return;
+            var realLineSegmentCount = lineSegmentCount / 1.5f;
             Vector3 velocity = (forceVector / rigidBody.mass) * Time.fixedDeltaTime;
 
             float flightDuration = (2 * velocity.y) / Physics.gravity.y;
-            float stepTime = flightDuration / lineSegmentCount;
+            float stepTime = flightDuration / realLineSegmentCount;
             _linePoints.Clear();
             _linePoints.Add(startingPoint);
-            for (int i = 0; i < _linePointCount; i++)
+            for (int i = 0; i < realLineSegmentCount*1.5f; i++)
             {
                 float stepTimePassed = stepTime * (i + 1);
                 Vector3 movementVector = new Vector3(
@@ -67,6 +68,15 @@ namespace Trajectory
                     velocity.y * stepTimePassed - 0.5f * Physics.gravity.y * stepTimePassed * stepTimePassed,
                     velocity.z * stepTimePassed);
                 Vector3 newPointOnLine = -movementVector + startingPoint;
+                
+                RaycastHit hit;
+                if (Physics.Raycast(_linePoints[i], newPointOnLine - _linePoints[i], out hit,
+                        (newPointOnLine - _linePoints[i]).magnitude))
+                {
+                    _linePoints.Add(hit.point);
+                    break;
+                }
+                
                 _linePoints.Add(newPointOnLine);
             }
 
@@ -78,7 +88,7 @@ namespace Trajectory
         {
             lineRenderer.positionCount = 0;
         }
-        
+
         private void UnSubscribeEvents()
         {
             CoreGameSignals.Instance.OnUpdateTrajectory -= OnUpdateTrajectory;

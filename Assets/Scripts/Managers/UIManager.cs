@@ -71,6 +71,9 @@ namespace Managers
                     canvas.GetChild(0).gameObject.SetActive(true);
                     Destroy(canvas.GetChild(1).gameObject);
                     break;
+                case UIStates.ExtraHealth:
+                    Instantiate(Resources.Load<GameObject>("UI/ExtraHealth"), canvas, false);
+                    break;
             }
             
         }

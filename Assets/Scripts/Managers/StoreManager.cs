@@ -104,16 +104,28 @@ namespace Managers
                     rareBallButtons[i].GetComponent<Button>().interactable 
                         = ES3.Load<bool>($"rareBallButtons{i}interactable");
                 }
+                else
+                {
+                    rareBallButtons[i].GetComponent<Button>().interactable = false;
+                }
                 
                 if (ES3.KeyExists($"commonBallButtons{i}interactable"))
                 {
                     commonBallButtons[i].GetComponent<Button>().interactable 
                         = ES3.Load<bool>($"commonBallButtons{i}interactable");
                 }
+                else
+                {
+                    commonBallButtons[i].GetComponent<Button>().interactable = false;
+                }
                 if (ES3.KeyExists($"legendaryBallButtons{i}interactable"))
                 {
                     legendaryBallButtons[i].GetComponent<Button>().interactable 
                         = ES3.Load<bool>($"legendaryBallButtons{i}interactable");
+                }
+                else
+                {
+                    legendaryBallButtons[i].GetComponent<Button>().interactable = false;
                 }
                 
                 
@@ -362,6 +374,10 @@ namespace Managers
                 ES3.DeleteKey($"rareBalls{i}");
                 ES3.DeleteKey($"commonBalls{i}");
                 ES3.DeleteKey($"legendaryBalls{i}");
+                
+                ES3.DeleteKey($"rareBallButtons{i}interactable");
+                ES3.DeleteKey($"commonBallButtons{i}interactable");
+                ES3.DeleteKey($"legendaryBallButtons{i}interactable");
             }
             ES3.DeleteKey("rareCount");
             ES3.DeleteKey("commonCount");

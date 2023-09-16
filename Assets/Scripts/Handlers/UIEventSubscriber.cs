@@ -78,6 +78,9 @@ namespace Handlers
                 case UIEventSubscriptionTypes.OnSwitchLegendaryBalls:
                     _button.onClick.AddListener(() =>UISignals.Instance.OnLegendary.Invoke());
                     break;
+                case UIEventSubscriptionTypes.OnReturnCheckPoint:
+                    _button.onClick.AddListener(() =>CoreGameSignals.Instance.OnReturnCheckPoint.Invoke());
+                    break;
             }
         }
 

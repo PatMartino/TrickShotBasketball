@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Enums;
 using Signals;
@@ -12,10 +13,17 @@ namespace Managers
 
         #endregion
 
-        #region OnEnable, OnDisable
+        #region Awake, OnEnable, OnDisable
+
+        private void Awake()
+        {
+            Time.timeScale = 1.4f;
+            
+        }
 
         private void OnEnable()
         {
+            
             SubscribeEvents();
         }
 
@@ -61,7 +69,7 @@ namespace Managers
         private void OnResumingGame()
         {
             OnChangeGameState(GameStates.Game);
-            Time.timeScale = 1;
+            Time.timeScale = 1.4f;
         }
 
         #endregion

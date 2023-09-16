@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ball
   - Basket
+  - CarRight
+  - CarLeft
   layers:
   - Default
   - TransparentFX

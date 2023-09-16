@@ -9,7 +9,7 @@ namespace Managers
     {
         #region private Field
 
-        private int _coin=1000;
+        private int _coin=3000;
         private bool _isActive=false;
 
         #endregion

@@ -1,6 +1,7 @@
 using Signals;
 using UnityEngine;
 using Data;
+using Enums;
 
 
 namespace Controllers
@@ -20,6 +21,7 @@ namespace Controllers
         //private ushort _levelBounceCount;
         private ushort _levelID;
         private BounceData _bounceData;
+        private Quaternion _zeroRotation =new Quaternion(0, 0, 0,0);
 
         #endregion
 
@@ -70,9 +72,22 @@ namespace Controllers
 
         private void CheckBounce()
         {
-            if (_bounce > _bounceData.MaxBounce)
+            if (!CoreGameSignals.Instance.OnGetIsBasket.Invoke())
             {
-                OnResettingBall();
+                if (_bounce > _bounceData.MaxBounce)
+                {
+                    HealthSignals.Instance.OnSetHealth?.Invoke(CoinOperations.Lose,1);
+                    Debug.Log("Health: " + HealthSignals.Instance.OnGetHealth.Invoke());
+                    if (HealthSignals.Instance.OnGetHealth.Invoke() <= 0)
+                    {
+                        UISignals.Instance.OnMenuUIManagement.Invoke(UIStates.ExtraHealth);
+                        CoreGameSignals.Instance.OnPausingGame.Invoke();
+                    }
+                    else
+                    {
+                        CoreGameSignals.Instance.OnResettingBall?.Invoke();
+                    }
+                }
             }
         }
 
@@ -82,7 +97,9 @@ namespace Controllers
             _rigidbody.velocity = Vector3.zero;
             _rigidbody.angularVelocity = Vector3.zero; 
             transform.position = CoreGameSignals.Instance.OnGettingBallHolder().position;
+            transform.rotation = _zeroRotation;
             CoreGameSignals.Instance.OnTryAgain?.Invoke();
+            UISignals.Instance.OnSettingBounceText?.Invoke();
             _rigidbody.isKinematic = true;
         }
 

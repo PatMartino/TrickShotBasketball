@@ -1,3 +1,4 @@
+using System;
 using Signals;
 using UnityEngine;
 using Enums;
@@ -51,7 +52,7 @@ namespace Ball
         private void OnMouseDrag()
         {
             Vector3 forceInit = Input.mousePosition - _mousePressDownPos;
-            Vector3 forceV = new Vector3(forceInit.x*1.5f, forceInit.y*2, forceInit.y*1.8f) * -forceMultiplier;
+            Vector3 forceV = new Vector3(forceInit.x*5, forceInit.y*12, forceInit.y*10f) * -forceMultiplier;
             if (forceV.z > 0)
             {
                 CoreGameSignals.Instance.OnUpdateTrajectory(forceV, _rigidBody, transform.position); 
@@ -64,9 +65,10 @@ namespace Ball
             if(CoreGameSignals.Instance.OnGettingGameState?.Invoke()!=GameStates.Game)    
                 return;
         
-            _rigidBody.AddForce(new Vector3(force.x*1.5f,force.y*2,force.y*1.8f) * -forceMultiplier);
+            _rigidBody.AddForce(new Vector3(force.x*5,force.y*12,force.y*10f) * -forceMultiplier);
             CoreGameSignals.Instance.OnChangeGameState?.Invoke(GameStates.Shoot);
             CoreGameSignals.Instance.OnSetNetClothCollider?.Invoke();
+            _rigidBody.angularVelocity = new Vector3(-3, 0,0 );
         }
 
         #endregion

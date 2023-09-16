@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490ad3054d995dd488fdf039e2af25e7, type: 3}
   m_Name: level2
   m_EditorClassIdentifier: 
-  maxBounce: 3
+  maxBounce: 0

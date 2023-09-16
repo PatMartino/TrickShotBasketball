@@ -12,6 +12,7 @@ namespace Ads
         [SerializeField] Button _showAdButton;
         [SerializeField] string _androidAdUnitId = "Rewarded_Android";
         [SerializeField] string _iOSAdUnitId = "Rewarded_iOS";
+        [SerializeField] private RewardAdButton type;
         string _adUnitId = null; // This will remain null for unsupported platforms
  
         void Awake()
@@ -80,8 +81,18 @@ namespace Ads
             if (adUnitId.Equals(_adUnitId) && showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED))
             {
                 Debug.Log("Unity Ads Rewarded Ad Completed");
-                CoinSignals.Instance.OnSetCoin?.Invoke(CoinOperations.Gain,25);
-                Debug.Log(CoinSignals.Instance.OnGetCoin?.Invoke());
+                if (type==RewardAdButton.DoublePoint)
+                {
+                    CoinSignals.Instance.OnSetCoin?.Invoke(CoinOperations.Gain,25);
+                }
+                else
+                {
+                    HealthSignals.Instance.OnSetHealth?.Invoke(CoinOperations.Gain,3);
+                    CoreGameSignals.Instance.OnContinueWithExtraHealth?.Invoke();
+                    Debug.Log("Obaaa");
+                }
+                
+                
                 _showAdButton.interactable = false;
             }
         }

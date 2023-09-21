@@ -68,7 +68,7 @@ namespace Managers
         {
             _checkpoint = CoreGameSignals.Instance.OnGettingLevelID.Invoke();
             SaveCheckPoint();
-            _health = 5;
+            _health = 9;
             Debug.Log("New Health: "+ _health);
         }
 
@@ -85,13 +85,13 @@ namespace Managers
 
         private void Load()
         {
-            _health = ES3.KeyExists("Health") ? ES3.Load<int>("Health") : 5;
+            _health = ES3.KeyExists("Health") ? ES3.Load<int>("Health") : 9;
             _checkpoint = ES3.KeyExists("CheckPoint") ? ES3.Load<int>("CheckPoint") : 1;
         }
 
         private void OnCheckIsACheckpoint()
         {
-            if (CoreGameSignals.Instance.OnGettingLevelID.Invoke() % 5 == 0)
+            if (CoreGameSignals.Instance.OnGettingLevelID.Invoke() % 3 == 0)
             {
                 OnSetCheckPoint();
             }

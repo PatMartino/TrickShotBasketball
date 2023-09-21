@@ -15,6 +15,7 @@ namespace GameObjects
 
         private void OnTriggerStay(Collider other)
         {
+            if(!other.gameObject.CompareTag("Ball"))return;
             var hitObj = other.gameObject;
             if (hitObj == null) return;
             var rb = hitObj.GetComponent<Rigidbody>();

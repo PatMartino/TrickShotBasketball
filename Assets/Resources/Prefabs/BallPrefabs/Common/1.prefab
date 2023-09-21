@@ -151,7 +151,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceMultiplier: 0.1
-  yourAngularSpeedMultiplier: 0.04
 --- !u!114 &854331105646654663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,3 +347,6 @@ MonoBehaviour:
   lineRenderer: {fileID: 6382515081299711812}
   lineSegmentCount: 40
   showPercentage: 0.8
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 55

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Enums;
 using UnityEngine;
 using Signals;
+using UnityEngine.Serialization;
 
 namespace Trajectory
 {
@@ -12,6 +13,7 @@ namespace Trajectory
         [SerializeField] private LineRenderer lineRenderer;
         [SerializeField] [Range(3, 90)] private int lineSegmentCount = 20;
         [SerializeField] [Range(0.1f, 1f)] private float showPercentage = 0.5f;
+        [SerializeField] private LayerMask layerMask;
         
         #endregion
 
@@ -70,8 +72,7 @@ namespace Trajectory
                 Vector3 newPointOnLine = -movementVector + startingPoint;
                 
                 RaycastHit hit;
-                if (Physics.Raycast(_linePoints[i], newPointOnLine - _linePoints[i], out hit,
-                        (newPointOnLine - _linePoints[i]).magnitude))
+                if (Physics.Raycast(_linePoints[i], newPointOnLine - _linePoints[i], out hit, (newPointOnLine - _linePoints[i]).magnitude, layerMask))
                 {
                     _linePoints.Add(hit.point);
                     break;

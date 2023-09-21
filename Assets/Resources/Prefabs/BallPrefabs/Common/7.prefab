@@ -144,7 +144,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceMultiplier: 0.1
-  yourAngularSpeedMultiplier: 0.08
 --- !u!135 &3050231649241904762
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -210,9 +209,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e5fc42fd4e3984aa14248f24d34430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineRenderer: {fileID: 1218349073585660413}
-  lineSegmentCount: 20
-  showPercentage: 0.6
+  lineRenderer: {fileID: 0}
+  lineSegmentCount: 40
+  showPercentage: 0.8
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 55
 --- !u!1 &6421758579357815055
 GameObject:
   m_ObjectHideFlags: 0

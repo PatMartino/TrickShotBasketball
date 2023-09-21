@@ -62,12 +62,32 @@ namespace Controllers
 
         private void OnCollisionEnter(Collision other)
         {
-            if(other.gameObject.CompareTag("Basket"))
-                return;
-            _bounce++;
-            Debug.Log(_bounce);
-            CheckBounce();
-            UISignals.Instance.OnSettingBounceText?.Invoke();
+            if (!other.gameObject.CompareTag("Basket") && !other.gameObject.CompareTag("Border"))
+            {
+                Debug.Log("Carrpppppppp");
+                _bounce++;
+                Debug.Log(_bounce);
+                CheckBounce();
+                UISignals.Instance.OnSettingBounceText?.Invoke();
+            }
+
+            else if (other.gameObject.CompareTag("Border"))
+            {
+                if (!CoreGameSignals.Instance.OnGetIsBasket.Invoke())
+                {
+                    HealthSignals.Instance.OnSetHealth?.Invoke(CoinOperations.Lose,1);
+                    Debug.Log("Health: " + HealthSignals.Instance.OnGetHealth.Invoke());
+                    if (HealthSignals.Instance.OnGetHealth.Invoke() <= 0)
+                    {
+                        UISignals.Instance.OnMenuUIManagement.Invoke(UIStates.ExtraHealth);
+                        CoreGameSignals.Instance.OnPausingGame.Invoke();
+                    }
+                    else
+                    {
+                        OnResettingBall();
+                    }
+                }
+            }
         }
 
         private void CheckBounce()
@@ -77,7 +97,7 @@ namespace Controllers
                 if (_bounce > _bounceData.MaxBounce)
                 {
                     HealthSignals.Instance.OnSetHealth?.Invoke(CoinOperations.Lose,1);
-                    Debug.Log("Health: " + HealthSignals.Instance.OnGetHealth.Invoke());
+                    Debug.LogWarning("Health: " + HealthSignals.Instance.OnGetHealth.Invoke());
                     if (HealthSignals.Instance.OnGetHealth.Invoke() <= 0)
                     {
                         UISignals.Instance.OnMenuUIManagement.Invoke(UIStates.ExtraHealth);

@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e5fc42fd4e3984aa14248f24d34430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineRenderer: {fileID: 0}
+  lineRenderer: {fileID: 3296736818546383968}
   lineSegmentCount: 40
   showPercentage: 0.8
   layerMask:

@@ -12,7 +12,7 @@ namespace Controllers
             if (CoreGameSignals.Instance.OnGettingBounceLeft?.Invoke() ==
                 CoreGameSignals.Instance.OnGettingBounceData?.Invoke())
             {
-                Debug.Log("Bum");
+                SoundSignals.Instance.OnPlaySwishSound.Invoke();
                 WaitForNextLevelMenu();
             }
             else

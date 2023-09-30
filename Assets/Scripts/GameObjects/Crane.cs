@@ -14,17 +14,14 @@ namespace GameObjects
         {
             if (isTurnRight)
             {
-                Debug.Log(transform.rotation.eulerAngles);
                 transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
                 if (transform.rotation.eulerAngles.z >=maxRotation&& transform.rotation.eulerAngles.z<=100)
                 {
-                    Debug.LogWarning("Obaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
                     isTurnRight = false;
                 }
             }
             else
             {
-                Debug.Log(transform.rotation.eulerAngles);
                 transform.Rotate(0, 0, -rotationSpeed * Time.deltaTime);
                 if (transform.rotation.eulerAngles.z <=360+minRotation && transform.rotation.eulerAngles.z>=100)
                 {

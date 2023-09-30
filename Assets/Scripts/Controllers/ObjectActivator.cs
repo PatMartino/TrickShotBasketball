@@ -51,6 +51,10 @@ namespace Controllers
             {
                 meshRenderer.enabled = state;
             }
+            else
+            {
+                obj.SetActive(state);
+            }
         }
     }
 }

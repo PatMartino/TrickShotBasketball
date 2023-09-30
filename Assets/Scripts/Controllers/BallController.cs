@@ -62,13 +62,14 @@ namespace Controllers
 
         private void OnCollisionEnter(Collision other)
         {
+            SoundSignals.Instance.OnPlayBounceSound.Invoke();
             if (!other.gameObject.CompareTag("Basket") && !other.gameObject.CompareTag("Border"))
             {
                 Debug.Log("Carrpppppppp");
-                _bounce++;
-                Debug.Log(_bounce);
-                CheckBounce();
-                UISignals.Instance.OnSettingBounceText?.Invoke();
+                    _bounce++;
+                    Debug.Log(_bounce);
+                    CheckBounce();
+                    UISignals.Instance.OnSettingBounceText?.Invoke();
             }
 
             else if (other.gameObject.CompareTag("Border"))
@@ -105,7 +106,9 @@ namespace Controllers
                     }
                     else
                     {
-                        CoreGameSignals.Instance.OnResettingBall?.Invoke();
+                        
+                            CoreGameSignals.Instance.OnResettingBall?.Invoke();
+                        
                     }
                 }
             }

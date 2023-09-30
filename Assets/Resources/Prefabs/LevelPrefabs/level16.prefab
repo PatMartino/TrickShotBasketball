@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 8078470265925888133}
   - component: {fileID: 4475885696337364254}
   - component: {fileID: 3607775810045754545}
-  - component: {fileID: 7947574549059363862}
-  - component: {fileID: 393742504370527637}
+  - component: {fileID: 1517229783398872277}
+  - component: {fileID: 788566885187858763}
   m_Layer: 0
   m_Name: craneRope
   m_TagString: Untagged
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Params:
-    maxConvexHulls: 32
+    maxConvexHulls: 2
     resolution: 50000
     concavity: 0.0025
     planeDownsampling: 4
@@ -128,15 +128,15 @@ MonoBehaviour:
     maxNumVerticesPerCH: 64
     minVolumePerCH: 0.0001
   m_colliders:
-  - {fileID: 7947574549059363862}
-  - {fileID: 393742504370527637}
+  - {fileID: 1517229783398872277}
+  - {fileID: 788566885187858763}
   m_isTrigger: 0
   m_material: {fileID: 0}
-  m_showColliders: 0
-  m_colliderAsset: {fileID: 11400000, guid: 1637d312a34a57a48a56ad7139e042d2, type: 2}
---- !u!64 &7947574549059363862
+  m_showColliders: 1
+  m_colliderAsset: {fileID: 11400000, guid: debddf0121013214b944808542d499df, type: 2}
+--- !u!64 &1517229783398872277
 MeshCollider:
-  m_ObjectHideFlags: 10
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -155,10 +155,10 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 3059216701276513304, guid: 1637d312a34a57a48a56ad7139e042d2, type: 2}
---- !u!64 &393742504370527637
+  m_Mesh: {fileID: -1411762721374772054, guid: debddf0121013214b944808542d499df, type: 2}
+--- !u!64 &788566885187858763
 MeshCollider:
-  m_ObjectHideFlags: 10
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -177,7 +177,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 3268894278185054978, guid: 1637d312a34a57a48a56ad7139e042d2, type: 2}
+  m_Mesh: {fileID: 5745317191218079560, guid: debddf0121013214b944808542d499df, type: 2}
 --- !u!1 &2268482939826561220
 GameObject:
   m_ObjectHideFlags: 0

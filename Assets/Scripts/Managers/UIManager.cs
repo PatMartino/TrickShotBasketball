@@ -55,6 +55,7 @@ namespace Managers
                     Instantiate(Resources.Load<GameObject>("UI/MainMenuUI"), canvas, false);
                     break;
                 case UIStates.InGameUI:
+                    UIDestroyer();
                     Instantiate(Resources.Load<GameObject>("UI/InGameUI"), canvas, false);
                     UISignals.Instance.OnSettingLevelText?.Invoke();
                     UISignals.Instance.OnSettingBounceText?.Invoke();

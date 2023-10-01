@@ -64,6 +64,7 @@ namespace Managers
             }
 
             _commonBalls[0] = true;
+            commonBallButtons[0].GetComponent<Button>().interactable = true;
         }
 
         private void OnSavingBallStore()
@@ -71,9 +72,7 @@ namespace Managers
             for (int i = 0; i < rareBallButtons.Count; i++)
             {
                 
-                
                 //ES3.Save($"legendaryBallButtons{i}interactable", legendaryBallButtons[i].GetComponent<Button>().interactable);
-                
                 ES3.Save($"rareBallButtons{i}ButtonColor", rareBallButtons[i].GetComponent<Image>().color);
                 ES3.Save($"commonBallButtons{i}ButtonColor", commonBallButtons[i].GetComponent<Image>().color);
                 ES3.Save($"legendaryBallButtons{i}ButtonColor", legendaryBallButtons[i].GetComponent<Image>().color);

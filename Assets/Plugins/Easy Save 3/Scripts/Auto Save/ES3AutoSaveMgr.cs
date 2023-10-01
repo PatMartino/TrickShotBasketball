@@ -2,7 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
+#if UNITY_VISUAL_SCRIPTING
+[Unity.VisualScripting.IncludeInSettings(true)]
+#elif BOLT_VISUAL_SCRIPTING
+[Ludiq.IncludeInSettings(true)]
+#endif
 public class ES3AutoSaveMgr : MonoBehaviour
 {
 	public static ES3AutoSaveMgr _current = null;
@@ -45,7 +51,7 @@ public class ES3AutoSaveMgr : MonoBehaviour
 
 	public HashSet<ES3AutoSave> autoSaves = new HashSet<ES3AutoSave>();
 
-	public void Save()
+    public void Save()
 	{
         if (autoSaves == null || autoSaves.Count == 0)
             return;
@@ -62,10 +68,13 @@ public class ES3AutoSaveMgr : MonoBehaviour
         {
             var gameObjects = new List<GameObject>();
             foreach (var autoSave in autoSaves)
+            {
                 // If the ES3AutoSave component is disabled, don't save it.
-                if (autoSave.enabled)
+                if (autoSave != null && autoSave.enabled)
                     gameObjects.Add(autoSave.gameObject);
-            ES3.Save<GameObject[]>(key, gameObjects.ToArray(), settings);
+            }
+            // Save in the same order as their depth in the hierarchy.
+            ES3.Save<GameObject[]>(key, gameObjects.OrderBy(x => GetDepth(x.transform)).ToArray(), settings);
         }
 
         if(settings.location == ES3.Location.Cache && ES3.FileExists(settings))
@@ -93,12 +102,7 @@ public class ES3AutoSaveMgr : MonoBehaviour
 
     public void Awake()
     {
-        autoSaves = new HashSet<ES3AutoSave>();
-
-        foreach (var go in this.gameObject.scene.GetRootGameObjects())
-            autoSaves.UnionWith(go.GetComponentsInChildren<ES3AutoSave>(true));
-
-        _current = this;
+        GetAutoSaves();
 
         if (loadEvent == LoadEvent.Awake)
             Load();
@@ -130,4 +134,27 @@ public class ES3AutoSaveMgr : MonoBehaviour
 		if(ES3AutoSaveMgr.Current != null)
 			ES3AutoSaveMgr.Current.autoSaves.Remove(autoSave);
 	}
+
+    /* Gathers all of the ES3AutoSave Components in the scene and registers them with the manager */
+    public void GetAutoSaves()
+    {
+        autoSaves = new HashSet<ES3AutoSave>();
+
+        foreach (var go in this.gameObject.scene.GetRootGameObjects())
+            autoSaves.UnionWith(go.GetComponentsInChildren<ES3AutoSave>(true));
+    }
+
+    // Gets the depth of a Transform in the hierarchy.
+    static int GetDepth(Transform t)
+    {
+        int depth = 0;
+
+        while (t.parent != null)
+        {
+            t = t.parent;
+            depth++;
+        }
+
+        return depth;
+    }
 }

@@ -179,7 +179,7 @@ public abstract class ES3Writer : IDisposable
             type = ES3TypeMgr.GetOrCreateES3Type(valueType);
 
             if(type == null)
-                throw new NotSupportedException("Types of " + valueType + " are not supported.");
+                throw new NotSupportedException("Types of " + valueType + " are not supported. Please see the Supported Types guide for more information: https://docs.moodkie.com/easy-save-3/es3-supported-types/");
 
             if (!type.isCollection && !type.isDictionary)
             {
@@ -195,10 +195,15 @@ public abstract class ES3Writer : IDisposable
 
 		if(type == null)
 			throw new ArgumentNullException("ES3Type argument cannot be null.");
-		if(type.isUnsupported)
-			throw new NotSupportedException("Types of "+type.type+" are not supported.");
+        if (type.isUnsupported)
+        {
+            if(type.isCollection || type.isDictionary)
+                throw new NotSupportedException(type.type + " is not supported because it's element type is not supported. Please see the Supported Types guide for more information: https://docs.moodkie.com/easy-save-3/es3-supported-types/");
+            else
+                throw new NotSupportedException("Types of " + type.type + " are not supported. Please see the Supported Types guide for more information: https://docs.moodkie.com/easy-save-3/es3-supported-types/");
+        }
 
-        if (type.isPrimitive)
+        if (type.isPrimitive || type.isEnum)
             type.Write(value, this);
         else if (type.isCollection)
         {
@@ -231,7 +236,7 @@ public abstract class ES3Writer : IDisposable
 	{
         var refMgr = ES3ReferenceMgrBase.Current;
         if (refMgr == null)
-            throw new InvalidOperationException("An Easy Save 3 Manager is required to save references. To add one to your scene, exit playmode and go to Assets > Easy Save 3 > Add Manager to Scene");
+            throw new InvalidOperationException("An Easy Save 3 Manager is required to save references. To add one to your scene, exit playmode and go to Tools > Easy Save 3 > Add Manager to Scene");
 
         // Get the reference ID, if it exists, and store it.
         long id = refMgr.Get(obj);

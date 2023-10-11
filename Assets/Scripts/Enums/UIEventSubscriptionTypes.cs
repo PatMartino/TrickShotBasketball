@@ -13,6 +13,12 @@
         OnSwitchCommonBalls,
         OnSwitchRareBalls,
         OnSwitchLegendaryBalls,
-        OnReturnCheckPoint
+        OnReturnCheckPoint,
+        OnIAPStore,
+        OnIAPStoreBack,
+        OnHealthTutorialOk,
+        OnBounceTutorialOk,
+        OnMuteMusic,
+        OnMuteSoundEffects
     }
 }

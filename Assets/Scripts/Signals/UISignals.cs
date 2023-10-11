@@ -14,5 +14,9 @@ namespace Signals
         public UnityAction OnRare = delegate {  };
         public UnityAction OnLegendary = delegate {  };
         public UnityAction OnSetCoinText = delegate {  };
+        public UnityAction OnSetHealthTest = delegate {  };
+        public UnityAction OnSetCheckPointUI = delegate {  };
+        public UnityAction OnChangeMusicIcon = delegate {  };
+        public UnityAction OnChangeSoundEffectIcon = delegate {  };
     }
 }

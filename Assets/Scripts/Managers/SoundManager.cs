@@ -10,6 +10,8 @@ namespace Managers
 
         [SerializeField] private AudioSource bounceSound;
         [SerializeField] private AudioSource swishSound;
+        [SerializeField] private AudioSource music;
+        [SerializeField] private AudioSource backGround;
 
         #endregion
 
@@ -28,6 +30,8 @@ namespace Managers
         {
             SoundSignals.Instance.OnPlayBounceSound += OnPlayBounceSound;
             SoundSignals.Instance.OnPlaySwishSound += OnPlaySwishSound;
+            SoundSignals.Instance.OnMuteMusic += OnMuteMusic;
+            SoundSignals.Instance.OnMuteSoundEffects += OnMuteSoundEffects;
         }
 
         private void OnPlayBounceSound()
@@ -38,6 +42,20 @@ namespace Managers
         private void OnPlaySwishSound()
         {
             swishSound.Play();
+        }
+
+        private void OnMuteMusic()
+        {
+            music.mute = !music.mute;
+            backGround.mute = !backGround.mute;
+            //UISignals.Instance.OnChangeMusicIcon?.Invoke();
+        }
+
+        private void OnMuteSoundEffects()
+        {
+            bounceSound.mute = !bounceSound.mute;
+            swishSound.mute = !swishSound.mute;
+            //UISignals.Instance.OnChangeSoundEffectIcon?.Invoke();
         }
 
         #endregion

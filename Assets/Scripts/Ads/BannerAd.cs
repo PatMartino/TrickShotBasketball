@@ -19,6 +19,11 @@ namespace Ads
             SubscribeEvents();
         }
 
+        private void OnDisable()
+        {
+            UnSubscribeEvents();
+        }
+
         void Start()
         {
             // Get the Ad Unit ID for the current platform:
@@ -39,10 +44,12 @@ namespace Ads
         {
             AdSignals.Instance.OnLoadBanner += LoadBanner;
             AdSignals.Instance.OnShowingBanner += ShowBannerAd;
+            //AdSignals.Instance.OnHideBanner += OnHideBannerAd;
         }
         
         public void LoadBanner()
         {
+            if (CoreGameSignals.Instance.OnGetGamePass()) return;
             Debug.Log("LoadBanner");
             // Set up options to notify the SDK of load events:
             BannerLoadOptions options = new BannerLoadOptions
@@ -53,6 +60,7 @@ namespace Ads
  
             // Load the Ad Unit with banner content:
             Advertisement.Banner.Load(_adUnitId, options);
+
         }
  
         // Implement code to execute when the loadCallback event triggers:
@@ -73,6 +81,7 @@ namespace Ads
         // Implement a method to call when the Show Banner button is clicked:
         void ShowBannerAd()
         {
+            if (CoreGameSignals.Instance.OnGetGamePass()) return;
             Debug.Log("Banner Showing");
             // Set up options to notify the SDK of show events:
             BannerOptions options = new BannerOptions
@@ -87,7 +96,7 @@ namespace Ads
         }
  
         // Implement a method to call when the Hide Banner button is clicked:
-        void HideBannerAd()
+        void OnHideBannerAd()
         {
             // Hide the banner:
             Advertisement.Banner.Hide();
@@ -96,6 +105,13 @@ namespace Ads
         void OnBannerClicked() { }
         void OnBannerShown() { }
         void OnBannerHidden() { }
+        
+        private void UnSubscribeEvents()
+        {
+            AdSignals.Instance.OnLoadBanner -= LoadBanner;
+            AdSignals.Instance.OnShowingBanner -= ShowBannerAd;
+            AdSignals.Instance.OnHideBanner -= OnHideBannerAd;
+        }
  
         
     }

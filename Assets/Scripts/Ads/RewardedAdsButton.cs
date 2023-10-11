@@ -83,7 +83,7 @@ namespace Ads
                 Debug.Log("Unity Ads Rewarded Ad Completed");
                 if (type==RewardAdButton.DoublePoint)
                 {
-                    CoinSignals.Instance.OnSetCoin?.Invoke(CoinOperations.Gain,25);
+                    CoinSignals.Instance.OnSetCoin?.Invoke(CoinOperations.Gain,100);
                 }
                 else
                 {

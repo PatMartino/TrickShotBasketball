@@ -49,11 +49,31 @@ namespace Managers
             switch (type)
             {
                 case CoinOperations.Gain:
-                    _health += num;
+                    if (!CoreGameSignals.Instance.OnGetGamePass())
+                    {
+                        _health += num;
+                    }
+                    else
+                    {
+                        _health = 9999;
+                    }
+                    
                     Debug.Log("New Health: " + _health);
                     break;
                 case CoinOperations.Lose:
-                    _health -= num;
+                    if (!CoreGameSignals.Instance.OnGetGamePass())
+                    {
+                        _health -= num;
+                        if (_health<0)
+                        {
+                            _health = 0;
+                        }
+                    }
+                    else
+                    {
+                        _health = 9999;
+                    }
+                    UISignals.Instance.OnSetHealthTest.Invoke();
                     break;
             }
             SaveHealth();
@@ -68,7 +88,15 @@ namespace Managers
         {
             _checkpoint = CoreGameSignals.Instance.OnGettingLevelID.Invoke();
             SaveCheckPoint();
-            _health = 9;
+            if (!CoreGameSignals.Instance.OnGetGamePass())
+            {
+                _health = 9;
+            }
+            else
+            {
+                _health = 9999;
+            }
+            
             Debug.Log("New Health: "+ _health);
         }
 

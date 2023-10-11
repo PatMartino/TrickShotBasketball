@@ -8,6 +8,12 @@
         NextLevelUI,
         Store,
         StoreButton,
-        ExtraHealth
+        ExtraHealth,
+        IAPStore,
+        IAPStoreBackButton,
+        HealthTutorial,
+        HealthTutorialBack,
+        BounceTutorial,
+        BounceTutorialBack
     }
 }

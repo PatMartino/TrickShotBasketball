@@ -48,7 +48,7 @@ namespace Ads
         // Show the loaded content in the Ad Unit:
         private void ShowAd()
         {
-            if (_adCount % 3 == 0)
+            if (_adCount % 3 == 0 && !CoreGameSignals.Instance.OnGetGamePass())
             {
                 Debug.Log("adcount: "+_adCount);
                 // Note that if the ad content wasn't previously loaded, this method will fail

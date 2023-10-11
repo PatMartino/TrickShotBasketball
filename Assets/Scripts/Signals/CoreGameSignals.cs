@@ -33,5 +33,8 @@ namespace Signals
         public UnityAction OnContinueWithExtraHealth = delegate {  };
         public Func<bool> OnGetIsBasket = () => false;
         public UnityAction<bool> OnSetIsBasket = delegate {  };
+        public Func<bool> OnGetGamePass = () => false;
+        public UnityAction OnGamePassActivated = delegate {  };
+        public UnityAction OnGamePassDeactivated = delegate {  };
     }
 }

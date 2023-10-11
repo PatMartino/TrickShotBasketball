@@ -9,9 +9,17 @@ namespace Controllers
     public class InGamePanelController : MonoBehaviour
     {
         #region Serialized Field
-
+        
+        [Header("Texts")]
         [SerializeField] private TextMeshProUGUI levelText;
         [SerializeField] private TextMeshProUGUI bounceText;
+        [SerializeField] private TextMeshProUGUI healthText;
+
+        [Header("CheckPointUI")] 
+        [SerializeField] private Transform checkPoint0;
+        [SerializeField] private Transform checkPoint1;
+        [SerializeField] private Transform checkPoint2;
+        [SerializeField] private Transform checkPoint3;
 
         #endregion
 
@@ -20,6 +28,8 @@ namespace Controllers
         private void OnEnable()
         {
             SubscribeEvents();
+            OnSetHealthText();
+            OnSetCheckPointUI();
         }
 
         private void OnDisable()
@@ -35,6 +45,8 @@ namespace Controllers
         {
             UISignals.Instance.OnSettingBounceText += OnSettingBounceText;
             UISignals.Instance.OnSettingLevelText += OnSettingLevelText;
+            UISignals.Instance.OnSetHealthTest += OnSetHealthText;
+            UISignals.Instance.OnSetCheckPointUI += OnSetCheckPointUI;
         }
 
         private void OnSettingLevelText()
@@ -46,13 +58,40 @@ namespace Controllers
 
         private void OnSettingBounceText()
         {
-            bounceText.text = "Bounce " +((int)CoreGameSignals.Instance.OnGettingBounceData()-(int)CoreGameSignals.Instance.OnGettingBounceLeft());
+            bounceText.text = ((int)CoreGameSignals.Instance.OnGettingBounceData()-(int)CoreGameSignals.Instance.OnGettingBounceLeft()).ToString();
+        }
+
+        private void OnSetHealthText()
+        {
+            healthText.text = HealthSignals.Instance.OnGetHealth().ToString();
+        }
+
+        private void OnSetCheckPointUI()
+        {
+            checkPoint0.gameObject.SetActive(false);
+            checkPoint1.gameObject.SetActive(false);
+            checkPoint2.gameObject.SetActive(false);
+            checkPoint3.gameObject.SetActive(false);
+            if (CoreGameSignals.Instance.OnGettingLevelID() % 3 == 0)
+            {
+                checkPoint0.gameObject.SetActive(true);
+            }
+            else if (CoreGameSignals.Instance.OnGettingLevelID() % 3 == 1)
+            {
+                checkPoint1.gameObject.SetActive(true);
+            }
+            else if (CoreGameSignals.Instance.OnGettingLevelID() % 3 == 2)
+            {
+                checkPoint2.gameObject.SetActive(true);
+            }
         }
         
         private void UnSubscribeEvents()
         {
             UISignals.Instance.OnSettingBounceText -= OnSettingBounceText;
             UISignals.Instance.OnSettingLevelText -= OnSettingLevelText;
+            UISignals.Instance.OnSetHealthTest -= OnSetHealthText;
+            UISignals.Instance.OnSetCheckPointUI -= OnSetCheckPointUI;
         }
         
         #endregion

@@ -42,7 +42,8 @@ namespace Managers
 
         private void OnMenuUIManagement(UIStates state)
         {
-            if (state != UIStates.Store && state !=UIStates.StoreButton)
+            if (state != UIStates.Store && state !=UIStates.StoreButton && state!=UIStates.IAPStore && state!=UIStates.IAPStoreBackButton && state!=UIStates.HealthTutorial
+                && state!=UIStates.HealthTutorialBack && state!=UIStates.BounceTutorial && state!=UIStates.BounceTutorialBack)
             {
                 Debug.Log(state);
                 UIDestroyer();
@@ -74,6 +75,27 @@ namespace Managers
                     break;
                 case UIStates.ExtraHealth:
                     Instantiate(Resources.Load<GameObject>("UI/ExtraHealth"), canvas, false);
+                    break;
+                case UIStates.IAPStore:
+                    canvas.GetChild(0).gameObject.SetActive(false);
+                    Instantiate(Resources.Load<GameObject>("UI/IAPStore"), canvas, false);
+                    break;
+                case UIStates.IAPStoreBackButton:
+                    canvas.GetChild(0).gameObject.SetActive(true);
+                    Destroy(canvas.GetChild(1).gameObject);
+                    break;
+                case UIStates.HealthTutorial:
+                    Instantiate(Resources.Load<GameObject>("UI/HealthTutorial"), canvas, false);
+                    break;
+                case UIStates.HealthTutorialBack:
+                    Destroy(canvas.GetChild(1).gameObject);
+                    Instantiate(Resources.Load<GameObject>("UI/BounceTutorial"), canvas, false);
+                    break;
+                case UIStates.BounceTutorial:
+                    Instantiate(Resources.Load<GameObject>("UI/BounceTutorial"), canvas, false);
+                    break;
+                case UIStates.BounceTutorialBack:
+                    Destroy(canvas.GetChild(1).gameObject);
                     break;
             }
             

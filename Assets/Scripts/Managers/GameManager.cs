@@ -7,6 +7,12 @@ namespace Managers
 {
     public class GameManager : MonoBehaviour
     {
+        #region Private Fields
+
+        private bool _isGamePassActive;
+
+        #endregion
+        
         #region Serialized Field
 
         [SerializeField] private GameStates states;
@@ -23,6 +29,10 @@ namespace Managers
 
         private void OnEnable()
         {
+            if (ES3.KeyExists("GamePass"))
+            {
+                _isGamePassActive = ES3.Load<bool>("GamePass");
+            }
             
             SubscribeEvents();
         }
@@ -42,6 +52,9 @@ namespace Managers
             CoreGameSignals.Instance.OnPausingGame += OnPausingGame;
             CoreGameSignals.Instance.OnResumingGame += OnResumingGame;
             CoreGameSignals.Instance.OnGettingGameState += OnGettingGameState;
+            CoreGameSignals.Instance.OnGetGamePass += OnGetGamePass;
+            CoreGameSignals.Instance.OnGamePassActivated += OnGamePassActivated;
+            CoreGameSignals.Instance.OnGamePassDeactivated += OnGamePassDeactivated;
         }
         private void UnSubscribeEvents()
         {
@@ -49,6 +62,9 @@ namespace Managers
             CoreGameSignals.Instance.OnPausingGame -= OnPausingGame;
             CoreGameSignals.Instance.OnResumingGame -= OnResumingGame;
             CoreGameSignals.Instance.OnGettingGameState -= OnGettingGameState;
+            CoreGameSignals.Instance.OnGetGamePass -= OnGetGamePass;
+            CoreGameSignals.Instance.OnGamePassActivated -= OnGamePassActivated;
+            CoreGameSignals.Instance.OnGamePassDeactivated -= OnGamePassDeactivated;
         }
 
         private void OnChangeGameState(GameStates state)
@@ -70,6 +86,30 @@ namespace Managers
         {
             OnChangeGameState(GameStates.Game);
             Time.timeScale = 1.4f;
+        }
+
+        private bool OnGetGamePass()
+        {
+            return _isGamePassActive;
+        }
+
+
+        private void OnGamePassActivated()
+        {
+            _isGamePassActive = true;
+            SaveGamePass();
+            Debug.Log(_isGamePassActive);
+        }
+
+        private void OnGamePassDeactivated()
+        {
+            _isGamePassActive = false;
+            SaveGamePass();
+        }
+
+        private void SaveGamePass()
+        {
+            ES3.Save("GamePass",_isGamePassActive);
         }
 
         #endregion

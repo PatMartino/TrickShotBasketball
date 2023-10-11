@@ -211,7 +211,7 @@ namespace Managers
             switch (type)
             {
                 case BallLevelTypes.Rare:
-                    if(CoinSignals.Instance.OnGetCoin.Invoke()<250)
+                    if(CoinSignals.Instance.OnGetCoin.Invoke()<500)
                         return;
                     if (_rareCount < 9)
                     {
@@ -234,13 +234,13 @@ namespace Managers
                         ES3.Save("rareCount", _rareCount);
                         _isSaved = true;
                         ES3.Save("isSaved",_isSaved);
-                        CoinSignals.Instance.OnSetCoin?.Invoke(CoinOperations.Lose,250);
+                        CoinSignals.Instance.OnSetCoin?.Invoke(CoinOperations.Lose,500);
                         HaveBall();
                         
                     }
                     break;
                 case BallLevelTypes.Legendary:
-                    if(CoinSignals.Instance.OnGetCoin.Invoke()<500)
+                    if(CoinSignals.Instance.OnGetCoin.Invoke()<750)
                         return;
                     if (_legendaryCount < 9)
                     {
@@ -263,12 +263,12 @@ namespace Managers
                         ES3.Save("legendaryCount", _legendaryCount);
                         _isSaved = true;
                         ES3.Save("isSaved",_isSaved);
-                        CoinSignals.Instance.OnSetCoin?.Invoke(CoinOperations.Lose,500);
+                        CoinSignals.Instance.OnSetCoin?.Invoke(CoinOperations.Lose,750);
                         HaveBall();
                     }
                     break;
                 case BallLevelTypes.Common:
-                    if(CoinSignals.Instance.OnGetCoin.Invoke()<100)
+                    if(CoinSignals.Instance.OnGetCoin.Invoke()<250)
                         return;
                     if (_commonCount < 8)
                     {
@@ -291,7 +291,7 @@ namespace Managers
                         ES3.Save("commonCount", _commonCount);
                         _isSaved = true;
                         ES3.Save("isSaved",_isSaved);
-                        CoinSignals.Instance.OnSetCoin?.Invoke(CoinOperations.Lose,100);
+                        CoinSignals.Instance.OnSetCoin?.Invoke(CoinOperations.Lose,250);
                         HaveBall();
                     }
                     break;
@@ -328,7 +328,7 @@ namespace Managers
 
         private void OnClickBallButton(int num, BallLevelTypes type)
         {
-            var whiteColor = new Color(1f, 1f, 1f);
+            var whiteColor = new Color(0f, 0.8039216f, 0.8313726f);
             var greenColor = new Color(0f, 1f, 0f);
             for (int i = 0; i < rareBallButtons.Count; i++)
             {

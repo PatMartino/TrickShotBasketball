@@ -79,6 +79,7 @@ namespace Managers
             UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.InGameUI);
             AdSignals.Instance.OnLoadBanner?.Invoke();
             AdSignals.Instance.OnShowingBanner?.Invoke();
+            UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.HealthTutorial);
         }
         
         private void OnNextLevel()
@@ -108,7 +109,7 @@ namespace Managers
 
         private void OnBasket()
         {
-            CoinSignals.Instance.OnSetCoin?.Invoke(CoinOperations.Gain,25);
+            CoinSignals.Instance.OnSetCoin?.Invoke(CoinOperations.Gain,100);
             UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.NextLevelUI);
             //CoreGameSignals.Instance.OnPausingGame?.Invoke();
             

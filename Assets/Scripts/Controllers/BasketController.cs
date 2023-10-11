@@ -21,6 +21,7 @@ namespace Controllers
                 {
                     HealthSignals.Instance.OnSetHealth?.Invoke(CoinOperations.Lose,1);
                     Debug.Log("Health: " + HealthSignals.Instance.OnGetHealth.Invoke());
+                    UISignals.Instance.OnMenuUIManagement.Invoke(UIStates.BounceTutorial);
                     if (HealthSignals.Instance.OnGetHealth.Invoke() <= 0)
                     {
                         UISignals.Instance.OnMenuUIManagement.Invoke(UIStates.ExtraHealth);

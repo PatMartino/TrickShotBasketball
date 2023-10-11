@@ -38,6 +38,7 @@ namespace Controllers
                 ES3.DeleteKey("reso");
                 ES3.DeleteKey("Health");
                 ES3.DeleteKey("CheckPoint");
+                ES3.DeleteKey("GamePass");
                 Debug.Log("Reset");
             }
             

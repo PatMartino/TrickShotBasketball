@@ -81,6 +81,24 @@ namespace Handlers
                 case UIEventSubscriptionTypes.OnReturnCheckPoint:
                     _button.onClick.AddListener(() =>CoreGameSignals.Instance.OnReturnCheckPoint.Invoke());
                     break;
+                case UIEventSubscriptionTypes.OnIAPStore:
+                    _button.onClick.AddListener(() =>UISignals.Instance.OnMenuUIManagement.Invoke(UIStates.IAPStore));
+                    break;
+                case UIEventSubscriptionTypes.OnIAPStoreBack:
+                    _button.onClick.AddListener(() =>UISignals.Instance.OnMenuUIManagement.Invoke(UIStates.IAPStoreBackButton));
+                    break;
+                case UIEventSubscriptionTypes.OnHealthTutorialOk:
+                    _button.onClick.AddListener(() =>UISignals.Instance.OnMenuUIManagement.Invoke(UIStates.HealthTutorialBack));
+                    break;
+                case UIEventSubscriptionTypes.OnBounceTutorialOk:
+                    _button.onClick.AddListener(() =>UISignals.Instance.OnMenuUIManagement.Invoke(UIStates.BounceTutorialBack));
+                    break;
+                case UIEventSubscriptionTypes.OnMuteMusic:
+                    _button.onClick.AddListener(() =>SoundSignals.Instance.OnMuteMusic?.Invoke());
+                    break;
+                case UIEventSubscriptionTypes.OnMuteSoundEffects:
+                    _button.onClick.AddListener(() =>SoundSignals.Instance.OnMuteSoundEffects?.Invoke());
+                    break;
             }
         }
 

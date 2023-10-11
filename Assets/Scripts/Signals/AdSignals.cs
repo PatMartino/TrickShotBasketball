@@ -9,5 +9,6 @@ namespace Signals
         public UnityAction OnShowingAd = delegate {  };
         public UnityAction OnShowingBanner = delegate {  };
         public UnityAction OnLoadBanner = delegate {  };
+        public UnityAction OnHideBanner = delegate {  };
     }
 }

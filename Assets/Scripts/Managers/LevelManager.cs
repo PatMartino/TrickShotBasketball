@@ -85,8 +85,8 @@ namespace Managers
         private void OnNextLevel()
         {
             CoreGameSignals.Instance.OnClearActiveLevel?.Invoke();
-            AdSignals.Instance.OnLoadingAd?.Invoke();
-            AdSignals.Instance.OnShowingAd?.Invoke();
+            AdSignals.Instance.OnLoadInterstitialAds?.Invoke();
+            AdSignals.Instance.OnShowInterstitialAds?.Invoke();
             levelID++;
             HealthSignals.Instance.OnCheckIsACheckpoint?.Invoke();
             //CoreGameSignals.Instance.OnClearActiveLevel?.Invoke();
@@ -118,11 +118,11 @@ namespace Managers
         private void OnReturnCheckPoint()
         {
             CoreGameSignals.Instance.OnClearActiveLevel?.Invoke();
-            AdSignals.Instance.OnLoadingAd?.Invoke();
-            AdSignals.Instance.OnShowingAd?.Invoke();
+            AdSignals.Instance.OnLoadInterstitialAds?.Invoke();
+            AdSignals.Instance.OnShowInterstitialAds?.Invoke();
             levelID = (ushort)HealthSignals.Instance.OnGetCheckPoint.Invoke();
             CoreGameSignals.Instance.OnLevelInitialize?.Invoke(levelID);
-            HealthSignals.Instance.OnSetHealth?.Invoke(CoinOperations.Gain,5);
+            HealthSignals.Instance.OnSetHealth?.Invoke(CoinOperations.Gain,9);
             CoreGameSignals.Instance.OnChangeGameState?.Invoke(GameStates.Game);
             UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.InGameUI);
             CoreGameSignals.Instance.OnResumingGame?.Invoke();

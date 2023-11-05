@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using Enums;
 using UnityEngine;
 using UnityEngine.Advertisements;
@@ -37,7 +37,7 @@ namespace Ads
         /*private void OnDisable()
         {
             AdSignals.Instance.OnLoadingAd -= LoadAd;
-        }*/
+        }
 
         private void SubscribeEvents()
         {
@@ -119,4 +119,4 @@ namespace Ads
             _showAdButton.onClick.RemoveAllListeners();
         }
     }
-}
+}*/

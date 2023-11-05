@@ -1,4 +1,4 @@
-using Signals;
+/*using Signals;
 using UnityEngine;
 using UnityEngine.Advertisements;
 
@@ -42,4 +42,4 @@ namespace Ads
             Debug.Log($"Unity Ads Initialization Failed: {error.ToString()} - {message}");
         }
     }
-}
+}*/

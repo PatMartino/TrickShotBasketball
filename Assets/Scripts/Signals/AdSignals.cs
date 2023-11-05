@@ -10,5 +10,8 @@ namespace Signals
         public UnityAction OnShowingBanner = delegate {  };
         public UnityAction OnLoadBanner = delegate {  };
         public UnityAction OnHideBanner = delegate {  };
+        public UnityAction OnLoadInterstitialAds = delegate {  };
+        public UnityAction OnShowInterstitialAds = delegate {  };
+        public UnityAction OnShowRewardedAd = delegate {  };
     }
 }

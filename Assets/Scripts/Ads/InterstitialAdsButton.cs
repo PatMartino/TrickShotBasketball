@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using Signals;
 using UnityEngine;
 using UnityEngine.Advertisements;
@@ -90,4 +90,4 @@ namespace Ads
             AdSignals.Instance.OnLoadingAd -= LoadAd;
         }
     }
-}
+}*/

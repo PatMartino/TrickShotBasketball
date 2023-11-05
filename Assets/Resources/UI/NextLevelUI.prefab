@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 403966427791630366}
   - component: {fileID: 7434637826508674285}
   - component: {fileID: 8152337784680578606}
-  - component: {fileID: 5198354807434116375}
+  - component: {fileID: 8767068394434152307}
   m_Layer: 5
   m_Name: Double Coin Button
   m_TagString: Untagged
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5198354807434116375
+--- !u!114 &8767068394434152307
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -266,12 +266,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1930741911551028915}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d652a2274ed7844b929a4cfa77cbf30, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b010ff2ea0f46b88f25a7b33da4d696, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _showAdButton: {fileID: 8152337784680578606}
-  _androidAdUnitId: Rewarded_Android
-  _iOSAdUnitId: Rewarded_iOS
   type: 0
 --- !u!1 &2356974502523443003
 GameObject:

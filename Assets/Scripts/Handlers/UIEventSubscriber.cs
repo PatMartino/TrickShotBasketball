@@ -92,12 +92,15 @@ namespace Handlers
                     break;
                 case UIEventSubscriptionTypes.OnBounceTutorialOk:
                     _button.onClick.AddListener(() =>UISignals.Instance.OnMenuUIManagement.Invoke(UIStates.BounceTutorialBack));
+                    _button.onClick.AddListener(() =>UISignals.Instance.OnMenuUIManagement.Invoke(UIStates.HandUI));
                     break;
                 case UIEventSubscriptionTypes.OnMuteMusic:
+                    _button.onClick.AddListener(() =>UISignals.Instance.OnChangeMusicIcon.Invoke());
                     _button.onClick.AddListener(() =>SoundSignals.Instance.OnMuteMusic?.Invoke());
                     break;
                 case UIEventSubscriptionTypes.OnMuteSoundEffects:
                     _button.onClick.AddListener(() =>SoundSignals.Instance.OnMuteSoundEffects?.Invoke());
+                    _button.onClick.AddListener(() =>UISignals.Instance.OnChangeSoundEffectIcon.Invoke());
                     break;
             }
         }

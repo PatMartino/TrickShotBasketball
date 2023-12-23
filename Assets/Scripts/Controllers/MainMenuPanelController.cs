@@ -18,10 +18,10 @@ namespace Controllers
         [SerializeField] private GameObject soundIcon;
 
         [Header("Images")] 
-        /*[SerializeField] private Sprite musicOn;
+        [SerializeField] private Sprite musicOn;
         [SerializeField] private Sprite musicOff;
         [SerializeField] private Sprite soundEffectsOn;
-        [SerializeField] private Sprite  soundEffectsOff;*/
+        [SerializeField] private Sprite  soundEffectsOff;
         
         #endregion
 
@@ -46,8 +46,8 @@ namespace Controllers
 
         private void SubscribeEvents()
         {
-            //UISignals.Instance.OnChangeMusicIcon += OnChangeMusicIcon;
-            //UISignals.Instance.OnChangeSoundEffectIcon += OnChangeSoundEffectIcon;
+            UISignals.Instance.OnChangeMusicIcon += OnChangeMusicIcon;
+            UISignals.Instance.OnChangeSoundEffectIcon += OnChangeSoundEffectIcon;
         }
 
         private void SettingLevelText()
@@ -57,7 +57,7 @@ namespace Controllers
             Debug.Log("Level: "+(int)CoreGameSignals.Instance.OnGettingLevelID());
         }
 
-        /*private void OnChangeMusicIcon()
+        private void OnChangeMusicIcon()
         {
             if (!_isMusicMuted)
             {
@@ -73,7 +73,7 @@ namespace Controllers
         
         private void OnChangeSoundEffectIcon()
         {
-            if (!_isMusicMuted)
+            if (!_isSoundEffectsMuted)
             {
                 soundIcon.GetComponent<Image>().sprite = soundEffectsOff;
                 _isSoundEffectsMuted = true;
@@ -83,7 +83,7 @@ namespace Controllers
                 soundIcon.GetComponent<Image>().sprite = soundEffectsOn;
                 _isSoundEffectsMuted = false;
             }
-        }*/
+        }
 
         #endregion
 

@@ -1,3 +1,4 @@
+using System.Collections;
 using Signals;
 using UnityEngine;
 namespace Ads
@@ -51,7 +52,7 @@ namespace Ads
                         }
                         else
                         {
-                                Debug.Log("No Ad");
+                                Debug.LogWarning("No normal Ad");
                                 Debug.Log("OBAAAAAA");
                         }   
                 }
@@ -93,6 +94,22 @@ namespace Ads
 // Indicates that there’s an available ad.
 // The adInfo object includes information about the ad that was loaded successfully
 // This replaces the RewardedVideoAvailabilityChangedEvent(true) event
+            private void OnDisable()
+            {
+                    IronSourceEvents.onSdkInitializationCompletedEvent -= SdkInitializationCompletedEvent;
+                    //Add AdInfo Interstitial Events
+                    IronSourceInterstitialEvents.onAdReadyEvent -= InterstitialOnAdReadyEvent;
+                    IronSourceInterstitialEvents.onAdLoadFailedEvent -= InterstitialOnAdLoadFailed;
+                    IronSourceInterstitialEvents.onAdOpenedEvent -= InterstitialOnAdOpenedEvent;
+                    IronSourceInterstitialEvents.onAdClickedEvent -= InterstitialOnAdClickedEvent;
+                    IronSourceInterstitialEvents.onAdShowSucceededEvent -= InterstitialOnAdShowSucceededEvent;
+                    IronSourceInterstitialEvents.onAdShowFailedEvent -= InterstitialOnAdShowFailedEvent;
+                    IronSourceInterstitialEvents.onAdClosedEvent -= InterstitialOnAdClosedEvent;
+
+                    AdSignals.Instance.OnLoadInterstitialAds -= OnLoadInterstitialAds;
+                    AdSignals.Instance.OnShowInterstitialAds -= OnShowInterstitialAds;
+
+            }
         
 
 

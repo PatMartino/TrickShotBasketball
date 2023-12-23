@@ -43,7 +43,7 @@ namespace Managers
         private void OnMenuUIManagement(UIStates state)
         {
             if (state != UIStates.Store && state !=UIStates.StoreButton && state!=UIStates.IAPStore && state!=UIStates.IAPStoreBackButton && state!=UIStates.HealthTutorial
-                && state!=UIStates.HealthTutorialBack && state!=UIStates.BounceTutorial && state!=UIStates.BounceTutorialBack)
+                && state!=UIStates.HealthTutorialBack && state!=UIStates.BounceTutorial && state!=UIStates.BounceTutorialBack && state!=UIStates.HandUI)
             {
                 Debug.Log(state);
                 UIDestroyer();
@@ -96,6 +96,9 @@ namespace Managers
                     break;
                 case UIStates.BounceTutorialBack:
                     Destroy(canvas.GetChild(1).gameObject);
+                    break;
+                case UIStates.HandUI:
+                    Instantiate(Resources.Load<GameObject>("UI/HandUI"), canvas, false);
                     break;
             }
             

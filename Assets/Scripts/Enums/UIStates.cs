@@ -14,6 +14,7 @@
         HealthTutorial,
         HealthTutorialBack,
         BounceTutorial,
-        BounceTutorialBack
+        BounceTutorialBack,
+        HandUI
     }
 }

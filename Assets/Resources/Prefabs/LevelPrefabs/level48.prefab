@@ -171,7 +171,7 @@ Transform:
   - {fileID: 3752344975903632476}
   - {fileID: 377666721225580139}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3282204931235942137
 GameObject:
@@ -14513,7 +14513,7 @@ GameObject:
   - component: {fileID: 4239672542377134597}
   m_Layer: 0
   m_Name: craneRope
-  m_TagString: Untagged
+  m_TagString: Basket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

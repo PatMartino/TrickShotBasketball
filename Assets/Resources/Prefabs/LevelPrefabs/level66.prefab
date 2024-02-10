@@ -33,7 +33,7 @@ Transform:
   - {fileID: 3064912117015495701}
   - {fileID: 7755540713561252612}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2982004617252364594
 GameObject:
@@ -14450,6 +14450,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 22.126
       objectReference: {fileID: 0}
+    - target: {fileID: 3003623036619675193, guid: 3ea614e7e6a7d32478ee1849897c88a8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 989010570e590464694ca5d34f0be6ce, type: 2}
+    - target: {fileID: 3003623036619675193, guid: 3ea614e7e6a7d32478ee1849897c88a8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: c7984ae8d67a2e14bafab5f2457ec211, type: 2}
+    - target: {fileID: 3003623036619675193, guid: 3ea614e7e6a7d32478ee1849897c88a8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5b6d8cb360853784d991b5bcf4269c83, type: 2}
     - target: {fileID: 3866560956089933582, guid: 3ea614e7e6a7d32478ee1849897c88a8,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -14465,6 +14480,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: trampoline (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7053866207573610216, guid: 3ea614e7e6a7d32478ee1849897c88a8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a66ca802930969c4a84de507180c1b04, type: 2}
+    - target: {fileID: 8600692515392828213, guid: 3ea614e7e6a7d32478ee1849897c88a8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6617d313ac722ee4fb383ca0a27d65e0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

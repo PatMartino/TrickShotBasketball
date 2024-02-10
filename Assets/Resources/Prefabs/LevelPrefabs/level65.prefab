@@ -14380,6 +14380,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ThreeFans
       objectReference: {fileID: 0}
+    - target: {fileID: 7792053846798525921, guid: 06dda826f6684234d9e94794f171856c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Basket
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2710513101130567636, guid: 06dda826f6684234d9e94794f171856c, type: 3}
     - {fileID: 8797523154586003362, guid: 06dda826f6684234d9e94794f171856c, type: 3}

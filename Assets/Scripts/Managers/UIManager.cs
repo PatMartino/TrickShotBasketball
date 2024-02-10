@@ -53,7 +53,7 @@ namespace Managers
             switch (state)
             {
                 case UIStates.MainMenuUI:
-                    Instantiate(Resources.Load<GameObject>("UI/MainMenuUI"), canvas, false);
+                    Instantiate(Resources.Load<GameObject>("UI/MainMenuUINew"), canvas, false);
                     break;
                 case UIStates.InGameUI:
                     UIDestroyer();

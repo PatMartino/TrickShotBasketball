@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8949190400053448394}
   m_Layer: 0
   m_Name: craneRope
-  m_TagString: Untagged
+  m_TagString: Basket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

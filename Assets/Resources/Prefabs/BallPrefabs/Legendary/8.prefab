@@ -238,6 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnerPosition: {fileID: 3813633902240253822}
+  specialPosition: 1
 --- !u!33 &6878129351938315874
 MeshFilter:
   m_ObjectHideFlags: 0

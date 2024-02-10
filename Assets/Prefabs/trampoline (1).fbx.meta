@@ -3,7 +3,32 @@ guid: f3b6ad386349f5643861bd73d179d831
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: trampolineBlue
+    second: {fileID: 2100000, guid: 6617d313ac722ee4fb383ca0a27d65e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: trampolineGreen
+    second: {fileID: 2100000, guid: 989010570e590464694ca5d34f0be6ce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: trampolinePurple
+    second: {fileID: 2100000, guid: a66ca802930969c4a84de507180c1b04, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: trampolineRed
+    second: {fileID: 2100000, guid: c7984ae8d67a2e14bafab5f2457ec211, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: trampolineYellow
+    second: {fileID: 2100000, guid: 5b6d8cb360853784d991b5bcf4269c83, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

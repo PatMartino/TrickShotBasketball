@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Commands.Level;
 using UnityEngine;
 using Signals;
@@ -37,8 +38,15 @@ namespace Managers
         private void Start()
         {
             CoreGameSignals.Instance.OnLevelInitialize?.Invoke(levelID);
-            UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.MainMenuUI);
             CoreGameSignals.Instance.OnSetNetClothCollider?.Invoke();
+            WaitForUI();
+            
+        }
+
+        private async void WaitForUI()
+        {
+            await Task.Delay(500);
+            UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.MainMenuUI);
         }
         
         private void OnDisable()
@@ -85,9 +93,9 @@ namespace Managers
         private void OnNextLevel()
         {
             CoreGameSignals.Instance.OnClearActiveLevel?.Invoke();
-            AdSignals.Instance.OnLoadInterstitialAds?.Invoke();
+            //AdSignals.Instance.OnLoadInterstitialAds?.Invoke();
             AdSignals.Instance.OnShowInterstitialAds?.Invoke();
-            levelID++;
+            CheckMaxLevel();
             HealthSignals.Instance.OnCheckIsACheckpoint?.Invoke();
             //CoreGameSignals.Instance.OnClearActiveLevel?.Invoke();
             CoreGameSignals.Instance.OnLevelInitialize?.Invoke(levelID);
@@ -122,7 +130,7 @@ namespace Managers
             AdSignals.Instance.OnShowInterstitialAds?.Invoke();
             levelID = (ushort)HealthSignals.Instance.OnGetCheckPoint.Invoke();
             CoreGameSignals.Instance.OnLevelInitialize?.Invoke(levelID);
-            HealthSignals.Instance.OnSetHealth?.Invoke(CoinOperations.Gain,9);
+            HealthSignals.Instance.OnSetHealth?.Invoke(CoinOperations.Gain,12);
             CoreGameSignals.Instance.OnChangeGameState?.Invoke(GameStates.Game);
             UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.InGameUI);
             CoreGameSignals.Instance.OnResumingGame?.Invoke();
@@ -137,6 +145,18 @@ namespace Managers
             CoreGameSignals.Instance.OnResumingGame?.Invoke();
             UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.InGameUI);
             CoreGameSignals.Instance.OnResettingBall?.Invoke();
+        }
+
+        private void CheckMaxLevel()
+        {
+            if (levelID <= 100)
+            {
+                levelID++;
+            }
+            else
+            {
+                levelID = 1;
+            }
         }
 
         private ushort OnGettingLevelID()

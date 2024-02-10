@@ -90,7 +90,7 @@ namespace Managers
             SaveCheckPoint();
             if (!CoreGameSignals.Instance.OnGetGamePass())
             {
-                _health = 9;
+                _health = 12;
             }
             else
             {
@@ -113,7 +113,7 @@ namespace Managers
 
         private void Load()
         {
-            _health = ES3.KeyExists("Health") ? ES3.Load<int>("Health") : 9;
+            _health = ES3.KeyExists("Health") ? ES3.Load<int>("Health") : 12;
             _checkpoint = ES3.KeyExists("CheckPoint") ? ES3.Load<int>("CheckPoint") : 1;
         }
 

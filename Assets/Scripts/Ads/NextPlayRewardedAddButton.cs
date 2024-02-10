@@ -11,8 +11,8 @@ namespace Ads
             
         private void Awake()
         {
-            IronSource.Agent.init ("1bfd4b96d");
-            IronSource.Agent.validateIntegration();
+            //IronSource.Agent.init ("1bfd4b96d");
+            //IronSource.Agent.validateIntegration();
         }
 
         private void OnEnable()
@@ -63,7 +63,7 @@ namespace Ads
                 }
                 else
                 {
-                        HealthSignals.Instance.OnSetHealth?.Invoke(CoinOperations.Gain,3);
+                        HealthSignals.Instance.OnSetHealth?.Invoke(CoinOperations.Gain,5);
                         CoreGameSignals.Instance.OnContinueWithExtraHealth?.Invoke();
                 }
                 

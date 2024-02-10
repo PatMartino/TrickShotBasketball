@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 2524718690614413928}
   m_Layer: 0
   m_Name: TwoFans
-  m_TagString: Untagged
+  m_TagString: Basket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13911,7 +13911,7 @@ GameObject:
   - component: {fileID: 4972519365087951686}
   m_Layer: 0
   m_Name: OneFanCerc
-  m_TagString: Untagged
+  m_TagString: Basket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14702,5 +14702,5 @@ Transform:
   - {fileID: 1896802002760790281}
   - {fileID: 2478889576827146230}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

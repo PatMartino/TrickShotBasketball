@@ -14386,6 +14386,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TwoFans
       objectReference: {fileID: 0}
+    - target: {fileID: 8060335786432635698, guid: 82739291eca4c1842a35994f8fdc939a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Basket
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -11,6 +11,7 @@ namespace Controllers
         #region Serialized Field
 
         [SerializeField] private Transform spawnerPosition;
+        [SerializeField] private bool specialPosition;
 
         #endregion
 
@@ -22,6 +23,7 @@ namespace Controllers
         private ushort _levelID;
         private BounceData _bounceData;
         private Quaternion _zeroRotation =new Quaternion(0, 0, 0,0);
+        private Vector3 _speRotation =new Vector3(0, -90, 0);
 
         #endregion
 
@@ -120,10 +122,20 @@ namespace Controllers
             _rigidbody.velocity = Vector3.zero;
             _rigidbody.angularVelocity = Vector3.zero; 
             transform.position = CoreGameSignals.Instance.OnGettingBallHolder().position;
-            transform.rotation = _zeroRotation;
+            if (specialPosition)
+            {
+                transform.localEulerAngles = new Vector3(0, -90, 0);
+            }
+            else
+            {
+                transform.rotation = _zeroRotation;
+            }
             CoreGameSignals.Instance.OnTryAgain?.Invoke();
             UISignals.Instance.OnSettingBounceText?.Invoke();
             _rigidbody.isKinematic = true;
+            
+            
+            
         }
 
         private ushort OnGettingBounceLeft()

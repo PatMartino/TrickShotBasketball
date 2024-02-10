@@ -10,6 +10,7 @@ namespace Ads
         {
             IronSource.Agent.init ("1bfd4b96d");
             IronSource.Agent.validateIntegration();
+            IronSource.Agent.setConsent(true);
         }
 
         private void OnEnable()
@@ -38,23 +39,30 @@ namespace Ads
 
         private void OnLoadInterstitialAds()
         {
-            IronSource.Agent.loadInterstitial();
+            //IronSource.Agent.loadInterstitial();
         }
 
         private void OnShowInterstitialAds()
         {
-                if (_adCount % 4 == 0 && !CoreGameSignals.Instance.OnGetGamePass())
+                if (_adCount % 5 == 0 && !CoreGameSignals.Instance.OnGetGamePass())
                 {
+                        
                         if (IronSource.Agent.isInterstitialReady())
                         {
                                 IronSource.Agent.showInterstitial();
-                                _adCount = 0;
+                                _adCount = 1;
                         }
                         else
                         {
                                 Debug.LogWarning("No normal Ad");
                                 Debug.Log("OBAAAAAA");
                         }   
+                }
+                else if (_adCount % 4 == 0 && !CoreGameSignals.Instance.OnGetGamePass())
+                {
+                        IronSource.Agent.loadInterstitial();
+                        _adCount++;
+                        Debug.Log("adcount: "+_adCount);
                 }
                 else
                 {

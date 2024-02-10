@@ -52,7 +52,7 @@ namespace Ball
         private void OnMouseDrag()
         {
             Vector3 forceInit = Input.mousePosition - _mousePressDownPos;
-            Vector3 forceV = new Vector3(forceInit.x*5, forceInit.y*12, forceInit.y*10f) * -forceMultiplier;
+            Vector3 forceV = new Vector3(forceInit.x*5, forceInit.y*14.4f, forceInit.y*12f) * -forceMultiplier;
             if (forceV.z > 0)
             {
                 CoreGameSignals.Instance.OnUpdateTrajectory(forceV, _rigidBody, transform.position); 
@@ -65,7 +65,7 @@ namespace Ball
             if(CoreGameSignals.Instance.OnGettingGameState?.Invoke()!=GameStates.Game)    
                 return;
         
-            _rigidBody.AddForce(new Vector3(force.x*5,force.y*12,force.y*10f) * -forceMultiplier);
+            _rigidBody.AddForce(new Vector3(force.x*5,force.y*14.4f,force.y*12f) * -forceMultiplier);
             CoreGameSignals.Instance.OnChangeGameState?.Invoke(GameStates.Shoot);
             CoreGameSignals.Instance.OnSetNetClothCollider?.Invoke();
             _rigidBody.angularVelocity = new Vector3(-3, 0,0 );

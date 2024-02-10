@@ -14423,6 +14423,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: obstacleV2
       objectReference: {fileID: 0}
+    - target: {fileID: 3049555245582841133, guid: 5f2f1b46ce1ca904989bfde5d935f508,
+        type: 3}
+      propertyPath: m_TagString
+      value: Basket
+      objectReference: {fileID: 0}
     - target: {fileID: 6939999336071651173, guid: 5f2f1b46ce1ca904989bfde5d935f508,
         type: 3}
       propertyPath: m_colliderAsset

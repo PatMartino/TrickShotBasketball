@@ -14498,6 +14498,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7468390120969456193}
     m_Modifications:
+    - target: {fileID: 5975124929801113989, guid: dc86544be308ee5448d28fd4f530b44c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Basket
+      objectReference: {fileID: 0}
     - target: {fileID: 6617197247354497439, guid: dc86544be308ee5448d28fd4f530b44c,
         type: 3}
       propertyPath: m_LocalPosition.x

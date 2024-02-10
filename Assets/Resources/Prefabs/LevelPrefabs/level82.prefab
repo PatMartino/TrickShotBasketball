@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 2859315036873026759}
   m_Layer: 0
   m_Name: TwoFans
-  m_TagString: Untagged
+  m_TagString: Basket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -490,7 +490,7 @@ Transform:
   - {fileID: 8786357262247777483}
   - {fileID: 4952032934187642768}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6019704007102706611
 GameObject:

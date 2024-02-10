@@ -13507,7 +13507,7 @@ GameObject:
   - component: {fileID: 722691406673292272}
   m_Layer: 0
   m_Name: craneRope
-  m_TagString: Untagged
+  m_TagString: Basket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14030,7 +14030,7 @@ GameObject:
   - component: {fileID: 1058015573303767553}
   m_Layer: 0
   m_Name: TwoFans
-  m_TagString: Untagged
+  m_TagString: Basket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14872,5 +14872,5 @@ Transform:
   - {fileID: 1844670400731527655}
   - {fileID: 8380898865566571220}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

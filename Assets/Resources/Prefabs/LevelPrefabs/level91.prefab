@@ -149,7 +149,7 @@ Transform:
   - {fileID: 5290654629819317182}
   - {fileID: 5410105604068683861}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2473281380121409953
 GameObject:
@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 6778810433239271382}
   m_Layer: 0
   m_Name: fanInside.big
-  m_TagString: Untagged
+  m_TagString: Basket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13944,7 +13944,7 @@ GameObject:
   - component: {fileID: 6187125588624410940}
   m_Layer: 0
   m_Name: OneFanCerc
-  m_TagString: Untagged
+  m_TagString: Basket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
